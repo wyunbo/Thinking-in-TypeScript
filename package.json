@@ -1,0 +1,26 @@
+{
+  "name": "thinking-in-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wyunbo/Thinking-in-TypeScript.git"
+  },
+  "author": "Yunbo Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wyunbo/Thinking-in-TypeScript/issues"
+  },
+  "homepage": "https://github.com/wyunbo/Thinking-in-TypeScript#readme",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "rollup": "^2.33.1",
+    "rollup-plugin-serve": "^1.1.0",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "typescript": "^4.0.5"
+  }
+}

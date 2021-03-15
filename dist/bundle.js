@@ -30,6 +30,17 @@
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     }
 
+    var __assign = function() {
+        __assign = Object.assign || function __assign(t) {
+            for (var s, i = 1, n = arguments.length; i < n; i++) {
+                s = arguments[i];
+                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+            }
+            return t;
+        };
+        return __assign.apply(this, arguments);
+    };
+
     var Pointer = /** @class */ (function () {
         function Pointer(x, y) {
             var args = [];
@@ -94,12 +105,12 @@
     console.log(tom2.eat);
 
     var _a;
-    var fn = function () {
-        return ++fn.count;
+    var fn$1 = function () {
+        return ++fn$1.count;
     };
-    fn.count = 0;
-    console.log(fn());
-    console.log(fn());
+    fn$1.count = 0;
+    console.log(fn$1());
+    console.log(fn$1());
     (_a = {
             type: 'fruit',
             taste: 'sour',
@@ -135,19 +146,102 @@
     createInstance(Person, 'Lebron');
 
     // in function
-    function createArray(times, val) {
-        var result = [];
-        for (var i = 0; i < times; i++) {
-            result.push(val);
-        }
-        return result;
-    }
-    var r = createArray(3, 'ABC');
     function swap(tuple) {
         return [tuple[1], tuple[0]];
     }
     console.log(swap(['1', 1]));
-    swap(['2', 3]);
+    var swap2 = function (tuple) {
+        return [tuple[0], tuple[1]];
+    };
+    var r1 = swap2(['2', 3, '']); // ["2", 3]
+    console.log(r1);
+    var sum = function (a, b) {
+        return (a + b);
+    };
+    var r2 = sum(1, 2); // Generics constraints
+    console.log(r2);
+    function getType(obj) {
+        return obj.length;
+    }
+    getType([]);
+    var MyArray = /** @class */ (function () {
+        function MyArray() {
+            this.arr = [];
+        }
+        MyArray.prototype.add = function (v) {
+            this.arr.push(v);
+        };
+        MyArray.prototype.getMaxNum = function () {
+            var arr = this.arr;
+            var max = arr[0];
+            for (var i = 1; i < arr.length; i++) {
+                var current = arr[i];
+                current > max ? (max = current) : void 0;
+            }
+            return max;
+        };
+        return MyArray;
+    }());
+    var arr = new MyArray();
+    arr.add(1);
+    arr.add(2);
+    arr.add(5);
+    arr.add(2);
+    console.log(arr.getMaxNum());
+    var arr2 = new MyArray();
+    arr2.add('1');
+    arr2.add('2');
+    arr2.add('6');
+    arr2.add('2');
+    console.log(arr2.getMaxNum());
+
+    // js typeof
+    // js instance of
+    var Dog = /** @class */ (function () {
+        function Dog() {
+        }
+        return Dog;
+    }());
+    var getInstance = function (clazz) {
+        return new clazz();
+    };
+    getInstance(Dog);
+    function getNum(val) {
+        val = val || 10.1; // Narrow the scope
+        function a() {
+            // The internal function variable cannot be detected in ts, and it needs to be judged again
+            val === null || val === void 0 ? void 0 : val.toFixed();
+        }
+        a();
+    }
+    getNum();
+    var assert = function (obj) {
+        throw new Error('Error');
+    };
+    var getArea = function (obj) {
+        switch (obj.kind) {
+            case 'rect':
+                return obj.width * obj.height;
+            case 'square':
+                return Math.pow(obj.width, 2);
+            case 'circle':
+                return Math.PI * Math.pow(obj.radius, 2);
+            default:
+                return assert();
+        }
+    };
+    console.log(getArea({ kind: 'rect', width: 100, height: 200 }));
+    console.log(getArea({ kind: 'square', width: 100 }));
+    console.log(getArea({ kind: 'circle', radius: 100 }));
+
+    function fn() {
+        throw new Error('');
+    }
+    ({ name: fn() });
+    function mixin(obj1, obj2) {
+        return __assign(__assign({}, obj1), obj2);
+    }
+    var r = mixin({ a: 1 }, { b: 2 });
     console.log(r);
 
 }());

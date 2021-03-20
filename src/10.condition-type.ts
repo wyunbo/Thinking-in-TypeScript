@@ -67,3 +67,5 @@ type InstanceType<T extends new (...args: any[]) => any> = T extends new (
   ? R
   : never;
 type MyInstance = InstanceType<typeof Animal>;
+
+export default {};

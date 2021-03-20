@@ -4,11 +4,11 @@
 // number string boolean
 
 let sum: number = 10;
-let str: string = 'zf';
+let str: string = 'str';
 let bool: boolean = true;
 
 // Tuple, both length and content type are limited
-let tuple: [string, number, boolean] = ['zf', 11, true];
+let tuple: [string, number, boolean] = ['str', 11, true];
 // You can add content as the type are declared to a tuple, but not attributes through an index.
 tuple.push(true);
 

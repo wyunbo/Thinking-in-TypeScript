@@ -64,3 +64,5 @@ interface IPerson {
 type Omit2<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 type Omit3<T, K extends keyof T> = { [P in Exclude<keyof T, K>]: T[P] };
 type MyOmitPerson = Omit<IPerson, 'company'>;
+
+export default {};

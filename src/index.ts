@@ -4,3 +4,7 @@ import './5.interface';
 import './6.generics';
 import './7.type-protection';
 import './8.cross-type';
+import './9.type-compatible';
+import './10.condition-type';
+import './11.built-in-type';
+import './12.custom-type';
